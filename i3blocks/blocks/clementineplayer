@@ -1,0 +1,15 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) clementine --quiet --previous && pkill -RTMIN+16 i3blocks;;
+	2) clementine --quiet --next && pkill -RTMIN+16 i3blocks;;
+	3) clementine --quiet --play-pause && pkill -RTMIN+16 i3blocks;;
+	4) clementine --quiet --volume-increase-by 6;;
+	5) clementine --quiet --volume-decrease-by 6;;
+esac
+
+TRACK=`qdbus-qt4 org.mpris.clementine /TrackList \
+org.freedesktop.MediaPlayer.GetCurrentTrack`
+qdbus-qt4 org.mpris.clementine /TrackList \
+	org.freedesktop.MediaPlayer.GetMetadata $TRACK \
+	| sort -r | grep "title" | sed -e "s/^.*: //g" | head -c 36
