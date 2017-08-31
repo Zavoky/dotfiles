@@ -21,8 +21,7 @@
 # (playerctl will attempt to connect to org.mpris.MediaPlayer2.[NAME] on your
 # DBus session).
 
-# use Env qw(BLOCK_INSTANCE);
-my $BLOCK_INSTANCE = "Clementine";
+use Env qw(BLOCK_INSTANCE);
 
 my @metadata = ();
 my $player_arg = "";
