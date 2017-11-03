@@ -3,6 +3,7 @@ syntax enable
 set tabstop=2
 set softtabstop=2
 set expandtab
+set autoindent
 set number
 set wildmenu
 set showmatch
